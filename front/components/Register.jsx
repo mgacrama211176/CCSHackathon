@@ -38,8 +38,8 @@ function Register() {
         <h5 className="font-weight-normal mb-0 text-white">
           <a className="text-danger mr-3" href="/">
             <i className="icofont-rounded-left"></i>
-          </a>
-          Sign in to your account
+          </a>{" "}
+          Create an account
         </h5>
       </div>
       <div className="p-3">
@@ -91,6 +91,19 @@ function Register() {
             By signing up, you agree to our terms and privacy policy.
           </p>
         </form>
+        <div className="sign-or d-flex align-items-center justify-content-center mb-4">
+          <hr className="mr-4"></hr>
+          <p className="text-muted text-center py-2 m-0">OR</p>
+          <hr className="ml-4"></hr>
+        </div>
+        <div className="osahan-signin text-center p-1">
+          <p className="m-0">
+            Already a member?{" "}
+            <a href="/login" className="text-danger ml-2">
+              Sign In
+            </a>
+          </p>
+        </div>
       </div>
     </div>
   );

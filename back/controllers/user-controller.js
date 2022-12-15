@@ -1,5 +1,6 @@
 import { createError } from "../error.js";
 import User from "../models/User.js";
+import Slot from "../models/parkSpace.js";
 import ParkingUser from "../models/parkingUser.js";
 import crypto from "crypto";
 import nodemailer from "nodemailer";
@@ -7,12 +8,52 @@ import nodemailer from "nodemailer";
 //Adding of parking User
 export const addParkers = async (request, response, next) => {
   const newParker = request.body;
+  console.log(newParker);
   try {
-    const newUser = new ParkingUser({
-      ...newParker,
+    const updateSlot = await Slot.findOneAndUpdate(
+      { parkingNumber: newParker.parkingNumber }
+      // {
+      //   $set: request.body,
+      // },
+      // { new: true }
+    );
+    response.status(200).json(updateSlot);
+  } catch (err) {
+    next(err);
+  }
+};
+
+//Removing of parking User
+export const DeleteParkers = async (request, response, next) => {
+  const removeParker = request.body.parkingNumber;
+  console.log(removeParker);
+  try {
+    const findParkSLot = await ParkingUser.findOne({
+      parkingNumber: removeParker,
     });
-    await newUser.save();
-    response.status(200).json(newUser);
+    const parkedId = findParkSLot._id;
+    const deleteParker = await ParkingUser.findByIdAndDelete(parkedId);
+    response.status(200).json(deleteParker);
+  } catch (err) {
+    response.status(500).json(`User Not found`);
+  }
+};
+
+//Specific Parker Find
+export const locateParker = async (request, response, next) => {
+  try {
+    const located = await ParkingUser.findById(request.params.id);
+    response.status(200).json(located);
+  } catch (err) {
+    next(err);
+  }
+};
+
+//localhost:3000/api/users/find/UserID to search
+export const getUser = async (request, response, next) => {
+  try {
+    const user = await User.findById(request.params.id);
+    response.status(200).json(user);
   } catch (err) {
     next(err);
   }
@@ -34,22 +75,6 @@ export const update = async (request, response, next) => {
     } catch (err) {}
   } else {
     return next(createError(403, "You can only update your account!"));
-  }
-};
-
-//Removing of parking User
-export const DeleteParkers = async (request, response, next) => {
-  const removeParker = request.body.parkingNumber;
-  console.log(removeParker);
-  try {
-    const findParkSLot = await ParkingUser.findOne({
-      parkingNumber: removeParker,
-    });
-    const parkedId = findParkSLot._id;
-    const deleteParker = await ParkingUser.findByIdAndDelete(parkedId);
-    response.status(200).json(deleteParker);
-  } catch (err) {
-    response.status(500).json(`User Not found`);
   }
 };
 
@@ -82,16 +107,6 @@ export const deleteUser = async (request, response, next) => {
     } catch (err) {}
   } else {
     return next(createError(403, "You can only delete your account!"));
-  }
-};
-
-//localhost:3000/api/users/find/UserID to search
-export const getUser = async (request, response, next) => {
-  try {
-    const user = await User.findById(request.params.id);
-    response.status(200).json(user);
-  } catch (err) {
-    next(err);
   }
 };
 

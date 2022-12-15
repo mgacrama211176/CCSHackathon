@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
@@ -8,6 +8,11 @@ const ParkModal = ({ slot }) => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  useEffect(() => {
+    console.log(slot);
+  }, []);
+
   return (
     <div>
       <>
@@ -22,41 +27,58 @@ const ParkModal = ({ slot }) => {
         </button>
 
         <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Confirm Parking</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <form action="#">
-              <div className="form-group">
-                <label className="text-muted f-10 mb-1">Driver Name</label>
-                <input className="form-control" placeholder="Enter the driver's name"></input>
-              </div>
-              <div className="form-group">
-                <label className="text-muted f-10 mb-1">Car Model</label>
-                <input className="form-control" placeholder="Enter the car model"></input>
-              </div>
-              <div className="form-group">
-                <label className="text-muted f-10 mb-1">Car Type</label>
-                <input className="form-control" placeholder="Enter the car type"></input>
-              </div>
-              <div className="form-group">
-                <label className="text-muted f-10 mb-1">Car License</label>
-                <input className="form-control" placeholder="Enter the car license"></input>
-              </div>
-              <div className="form-group">
-                <label className="text-muted f-10 mb-1">Plate Number</label>
-                <input className="form-control" placeholder="Enter the car's plate number"></input>
-              </div>
-            </form>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="danger" onClick={handleClose}>
-              Close
-            </Button>
-            <Button variant="success" onClick={handleClose}>
-              Confirm parking
-            </Button>
-          </Modal.Footer>
+          {slot.parkerPlateNumber == null ? (
+            <>
+              <Modal.Header closeButton>
+                <Modal.Title>Confirm Parking</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <form action="#">
+                  <div className="form-group">
+                    <label className="text-muted f-10 mb-1">Plate Number</label>
+                    <input
+                      className="form-control"
+                      placeholder="Enter the car's plate number"
+                    ></input>
+                  </div>
+                </form>
+              </Modal.Body>
+              <Modal.Footer>
+                <Button variant="danger" onClick={handleClose}>
+                  Close
+                </Button>
+                <Button variant="success" onClick={handleClose}>
+                  Confirm parking
+                </Button>
+              </Modal.Footer>
+            </>
+          ) : (
+            <>
+              <Modal.Header closeButton>
+                <Modal.Title>Parker Information</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <form action="#">
+                  <div className="form-group">
+                    <label className="text-muted f-10 mb-1">
+                      Plate Number : {slot.parkerPlateNumber}
+                    </label>
+                    <label className="text-muted f-10 mb-1">
+                      Parking Slot No : {slot.parkingNumber}
+                    </label>
+                  </div>
+                </form>
+              </Modal.Body>
+              <Modal.Footer>
+                <Button variant="danger" onClick={handleClose}>
+                  Close
+                </Button>
+                <Button variant="success" onClick={handleClose}>
+                  Confirm Exit
+                </Button>
+              </Modal.Footer>
+            </>
+          )}
         </Modal>
       </>
     </div>

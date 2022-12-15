@@ -13,6 +13,24 @@ export const addSlot = async (request, response, next) => {
   }
 };
 
+//Update Parking Slot
+export const UpdateController = async (request, response, next) => {
+  const parkingInfo = request.body;
+  try {
+    const UpdateSlot = await ParkSpace.findByIdAndUpdate(
+      request.params.id,
+      {
+        $set: parkingInfo,
+      },
+      { new: true }
+    );
+
+    response.status(200).json(UpdateSlot);
+  } catch (err) {
+    next(err);
+  }
+};
+
 //Viewing all slots
 export const viewController = async (request, response, next) => {
   const AllSlots = await ParkSpace.find({});

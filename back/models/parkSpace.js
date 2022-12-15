@@ -2,8 +2,8 @@ import mongoose from "mongoose";
 
 const SpaceSchema = new mongoose.Schema(
   {
-    parkerId: {
-      type: { String },
+    parkerPlateNumber: {
+      type: String,
       default: null,
     },
 

@@ -4,6 +4,7 @@ import SignIn from '../pages/SignIn';
 import SignUp from '../pages/SignUp';
 import Reports from '../pages/Reports';
 import Profile from '../pages/Profile';
+import Notice from '../pages/Notice';
 
 
 import {Routes, Route, BrowserRouter} from 'react-router-dom'
@@ -17,6 +18,7 @@ const App = () => {
       <Route path="/register" element={<SignUp/>}/>
       <Route path="/reports" element={<Reports/>}/>
       <Route path="/profile" element={<Profile/>}/>
+      <Route path="/notice" element={<Notice/>}/>
     </Routes>
     </BrowserRouter>
 

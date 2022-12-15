@@ -1,3 +1,4 @@
+import NoticeModal from './NoticeModal';
 import Footer from '../components/Footer';
 
 function Notification() {
@@ -9,6 +10,9 @@ function Notification() {
                         <a className="text-danger mr-3" href="/"><i className="icofont-rounded-left"></i></a>
                         Notifications
                     </h5>
+                    <div className="ml-auto d-flex align-items-center">
+                        <NoticeModal/>
+                    </div>
                 </div>
                 <div className="osahan-notification">
                     <div className="notification d-flex m-0 bg-white border-bottom p-3">

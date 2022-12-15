@@ -36,21 +36,26 @@ function Home() {
           <div className="ml-auto d-flex align-items-center">
             {currentUser ? (
               <>
+                <a href="#" data-toggle="dropdown">
                 <img
                   src="/img/user1.jpg"
                   className="img-fluid rounded-circle"
                 ></img>
+                </a>
+                <div className="dropdown-menu" role="menu">
+                  <a href="/logout" className="dropdown-item">Logout</a>
+                </div>
               </>
             ) : (
               <>
                 <a href="/login" className="mr-3">
-                  <Button variant="light ">Login</Button>
+                  <Button className="btn btn-sm btn-light">Login</Button>
                 </a>
               </>
             )}
           </div>
         </div>
-        <div className="bg-danger px-3 pb-3">
+        <div className="bg-danger px-3 pb-3 mt-4">
           <div className="bg-white rounded-1 p-3 mt-2">
             <form action="#">
               <div className="form-group border-bottom pb-2">

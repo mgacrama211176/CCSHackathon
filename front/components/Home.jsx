@@ -40,10 +40,6 @@ function Home() {
                             </div>
                             <div className="select-seat">
                                 <div className="checkboxes-seat mt-4">
-                                    <a href="/confirmparking"><div className="btn check-seat btn-success small btn-sm rounded mr-2 mb-2">P1</div></a>
-                                    <a href="/confirmparking"><div className="btn check-seat btn-danger active small btn-sm rounded mr-2 mb-2">P2</div></a>
-                                </div>
-                                <div className="checkboxes-seat mt-4">
                                     <button type="button" className="btn check-seat btn-success small btn-sm rounded mr-2 mb-2" data-toggle="modal" data-target="#confirmModal">
                                         P1
                                     </button>

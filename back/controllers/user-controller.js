@@ -18,6 +18,25 @@ export const addParkers = async (request, response, next) => {
   }
 };
 
+//localhost:3000/api/users/UserID with body
+export const update = async (request, response, next) => {
+  const newParker = request.body;
+  if (request.params.id) {
+    try {
+      const updatedUser = await User.findByIdAndUpdate(
+        request.params.id,
+        {
+          $set: request.body,
+        },
+        { new: true }
+      );
+      response.status(200).json(updatedUser);
+    } catch (err) {}
+  } else {
+    return next(createError(403, "You can only update your account!"));
+  }
+};
+
 //Removing of parking User
 export const DeleteParkers = async (request, response, next) => {
   const removeParker = request.body.parkingNumber;
@@ -51,24 +70,6 @@ export const retrieveUsers = async (request, response, next) => {
     response.status(200).json(allUsers);
   } catch (err) {
     response.status(500).json(err);
-  }
-};
-
-//localhost:3000/api/users/UserID with body
-export const update = async (request, response, next) => {
-  if (request.params.id) {
-    try {
-      const updatedUser = await User.findByIdAndUpdate(
-        request.params.id,
-        {
-          $set: request.body,
-        },
-        { new: true }
-      );
-      response.status(200).json(updatedUser);
-    } catch (err) {}
-  } else {
-    return next(createError(403, "You can only update your account!"));
   }
 };
 

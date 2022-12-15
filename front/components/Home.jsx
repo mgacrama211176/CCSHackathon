@@ -96,13 +96,13 @@ function Home() {
                   <ParkModal slot={slot} key={slot._id} />
                 ))}
 
-                <button
+                {/* <button
                   type="button"
                   className="btn check-seat btn-danger small btn-sm rounded mr-2 mb-2"
                   disabled
                 >
                   P2
-                </button>
+                </button> */}
               </div>
             </div>
           </div>

@@ -53,7 +53,7 @@ const ParkModal = () => {
               Close
             </Button>
             <Button variant="success" onClick={handleClose}>
-              Confirm parking
+              Confirm Parking
             </Button>
           </Modal.Footer>
         </Modal>

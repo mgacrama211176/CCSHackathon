@@ -27,13 +27,13 @@ function Home() {
             ) : (
               <>
                 <a href="/login" className="mr-3">
-                  <Button variant="light ">Login</Button>
+                  <Button className="btn btn-sm btn-light">Login</Button>
                 </a>
               </>
             )}
           </div>
         </div>
-        <div className="bg-danger px-3 pb-3">
+        <div className="bg-danger px-3 pb-3 mt-4">
           <div className="bg-white rounded-1 p-3 mt-2">
             <form action="#">
               <div className="form-group border-bottom pb-2">

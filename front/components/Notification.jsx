@@ -1,4 +1,4 @@
-import NoticeModal from '../components/NoticeModal';
+import NoticeModal from './NoticeModal';
 import Footer from '../components/Footer';
 
 function Notification() {

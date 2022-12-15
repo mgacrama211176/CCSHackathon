@@ -1,14 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  currentUser: null,
+  selectedSpace: null,
   loading: false,
   error: false,
   message: "",
 };
 
-export const userSlice = createSlice({
-  name: "username",
+export const spaceSlice = createSlice({
+  name: "parkingSpace",
   initialState,
   reducers: {
     loginStart: (state) => {
@@ -16,16 +16,15 @@ export const userSlice = createSlice({
     },
     loginSuccess: (state, action) => {
       state.loading = false;
-      state.currentUser = action.payload;
-
-      state.message = "logged in!";
+      state.selectedSpace = action.payload;
+      state.message = "Parked";
     },
     loginFailed: (state) => {
       state.loading = false;
       state.error = true;
     },
     logout: (state) => {
-      state.currentUser = null;
+      state.selectedSpace = null;
       state.loading = false;
       state.error = false;
       state.message = "logged out!";
@@ -33,7 +32,13 @@ export const userSlice = createSlice({
   },
 });
 
-export const { loginStart, loginSuccess, loginFailed, logout } =
-  userSlice.actions;
+export const {
+  loginStart,
+  loginSuccess,
+  loginFailed,
+  logout,
+  subscription,
+  reduxSaveVideo,
+} = spaceSlice.actions;
 
-export default userSlice.reducer;
+export default spaceSlice.reducer;

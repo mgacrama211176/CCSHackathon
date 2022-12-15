@@ -102,14 +102,6 @@ function Home() {
                 {slotsData.map((slot) => (
                   <ParkModal slot={slot} key={slot._id} />
                 ))}
-
-                {/* <button
-                  type="button"
-                  className="btn check-seat btn-danger small btn-sm rounded mr-2 mb-2"
-                  disabled
-                >
-                  P2
-                </button> */}
               </div>
             </div>
           </div>

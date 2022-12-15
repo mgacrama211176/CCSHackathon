@@ -3,7 +3,7 @@ function Footer() {
         <div className="fixed-bottom p-3">
             <div className="footer-menu row m-0 bg-danger shadow rounded-2">
                 <div className="col-3 p-0 text-center">
-                    <a href="/" className="home text-white active">
+                    <a href="/" className="home text-white">
                         <span className="icofont-ui-home h5"></span>
                         <p className="mb-0 small">Home</p>
                     </a>
@@ -15,7 +15,7 @@ function Footer() {
                     </a>
                 </div>
                 <div className="col-3 p-0 text-center">
-                    <a href="/notifications" className="home text-white">
+                    <a href="/notice" className="home text-white">
                         <span className="icofont-notification h5"></span>
                         <small className="osahan-n">0</small>
                         <p className="mb-0 small">Notice</p>

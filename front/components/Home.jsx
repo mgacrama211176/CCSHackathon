@@ -82,6 +82,9 @@ function Home() {
                                             </div>
                                         </div>
                                     </div>
+                                    <button type="button" className="btn check-seat btn-danger small btn-sm rounded mr-2 mb-2" disabled>
+                                        P2
+                                    </button>
                                 </div>
                             </div>
                         </div>

@@ -15,7 +15,7 @@ function Footer() {
                     </a>
                 </div>
                 <div className="col-3 p-0 text-center">
-                    <a href="/notifications" className="home text-white">
+                    <a href="/notice" className="home text-white">
                         <span className="icofont-notification h5"></span>
                         <small className="osahan-n">0</small>
                         <p className="mb-0 small">Notice</p>

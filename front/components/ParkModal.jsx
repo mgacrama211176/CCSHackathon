@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
-const ParkModal = () => {
+const ParkModal = ({ slot }) => {
+  console.log(slot);
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -17,7 +18,7 @@ const ParkModal = () => {
           data-target="#confirmModal"
           onClick={handleShow}
         >
-          P1
+          P{slot.parkingNumber}
         </button>
 
         <Modal show={show} onHide={handleClose}>

@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 //ROUTES
 import userRoute from "./routes/users-route.js";
 import authRoute from "./routes/auth.js";
+import spacesRoute from "./routes/spaces.js";
 
 import cookieParser from "cookie-parser";
 
@@ -34,7 +35,7 @@ app.use(cors({ credentials: true }));
 
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
-app.use("/api/slots", userRoute);
+app.use("/api/slots", spacesRoute);
 
 app.use((err, request, response, next) => {
   const status = err.status || 500;

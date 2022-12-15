@@ -1,15 +1,32 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Footer from "../components/Footer";
 import Button from "react-bootstrap/Button";
 import { useDispatch, useSelector } from "react-redux";
 import ParkModal from "./ParkModal";
+import axios from "axios";
 
 function Home() {
   const { currentUser } = useSelector((state) => state.username);
-  const [spaces, setSpaces] = useState([30]);
-  console.log(currentUser);
 
-  const [modalOn, setModalOn] = useState(false);
+  const [slotsData, setSlotData] = useState([]);
+
+  const getAllSlots = async () => {
+    try {
+      const slots = await axios.get(
+        `http://localhost:4000/api/slots/viewSlots`
+      );
+      setSlotData(slots.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    getAllSlots();
+    console.log(slotsData);
+    // console.log(currentUser);
+  }, []);
+
   return (
     <div className="seat-select padding-bt">
       <div className="p-3 shadow bg-danger danger-nav osahan-home-header">
@@ -76,11 +93,9 @@ function Home() {
               </div>
               <div className="select-seat">
                 <div className="checkboxes-seat mt-4 d-flex flex-wrap">
-                  <ParkModal />
-                  <ParkModal />
-                  <ParkModal />
-                  <ParkModal />
-                  <ParkModal />
+                  {slotsData.map((slot) => (
+                    <ParkModal slot={slot} key={slot._id} />
+                  ))}
 
                   <button
                     type="button"

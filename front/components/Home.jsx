@@ -1,15 +1,32 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Footer from "../components/Footer";
 import Button from "react-bootstrap/Button";
 import { useDispatch, useSelector } from "react-redux";
 import ParkModal from "./ParkModal";
+import axios from "axios";
 
 function Home() {
   const { currentUser } = useSelector((state) => state.username);
-  const [spaces, setSpaces] = useState([30]);
-  console.log(currentUser);
 
-  const [modalOn, setModalOn] = useState(false);
+  const [slotsData, setSlotData] = useState([]);
+
+  const getAllSlots = async () => {
+    try {
+      const slots = await axios.get(
+        `http://localhost:4000/api/slots/viewSlots`
+      );
+      setSlotData(slots.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    getAllSlots();
+    console.log(slotsData);
+    // console.log(currentUser);
+  }, []);
+
   return (
     <div className="seat-select padding-bt">
       <div className="p-3 shadow bg-danger danger-nav osahan-home-header">
@@ -62,10 +79,7 @@ function Home() {
           <div className="col-8 pl-0">
             <div className="d-flex">
               <div className="sold text-center">
-                <img
-                  src="/img/sold-seat.png"
-                  className="img-fluid mb-1"
-                ></img>
+                <img src="/img/sold-seat.png" className="img-fluid mb-1"></img>
                 <p className="small f-10">Unavailable</p>
               </div>
               <div className="sold text-center mx-3">
@@ -78,19 +92,17 @@ function Home() {
             </div>
             <div className="select-seat">
               <div className="checkboxes-seat mt-4 d-flex flex-wrap">
-                <ParkModal />
-                <ParkModal />
-                <ParkModal />
-                <ParkModal />
-                <ParkModal />
+                {slotsData.map((slot) => (
+                  <ParkModal slot={slot} key={slot._id} />
+                ))}
 
-                <button
+                {/* <button
                   type="button"
                   className="btn check-seat btn-danger small btn-sm rounded mr-2 mb-2"
                   disabled
                 >
                   P2
-                </button>
+                </button> */}
               </div>
             </div>
           </div>

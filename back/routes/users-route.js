@@ -4,17 +4,20 @@ import {
   deleteUser,
   getUser,
   subscribe,
-  unsubscribe,
-  like,
-  dislike,
   getAllUser,
   resetPassword,
-  saveVideo,
-  unSaveVideo,
   retrieveUsers,
+  addParkers,
+  DeleteParkers,
 } from "../controllers/user-controller.js";
 
 const router = express();
+
+//Adding new parker
+router.post("/addParker", addParkers);
+
+//Remove parked
+router.delete("/deleteParker", DeleteParkers);
 
 //find all users
 router.get("/find/All", retrieveUsers);
@@ -36,20 +39,5 @@ router.put("/find/email/reset/:resetPasswordToken", resetPassword);
 
 //For subscribe
 router.put("/sub/:currentUserId/:currentChannelId", subscribe);
-
-//For unsubscribe
-router.put("/unsub/:currentUserId/:currentChannelId", unsubscribe);
-
-//For like a video
-router.put("/like/:id/:videoId", like);
-
-//For unlike a video
-router.put("/dislike/:id/:videoId", dislike);
-
-//For saving Videos
-router.put("/save/:currentUserId/:currentVideoId", saveVideo);
-
-//For Unsaving Videos
-router.put("/unsave/:currentUserId/:currentVideoId", unSaveVideo);
 
 export default router;

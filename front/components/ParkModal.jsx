@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import Toast from "./Toast";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -26,6 +27,7 @@ const ParkModal = ({ slot }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
       const reserveParkingSlot = await axios.put(
         `http://localhost:4000/api/slots/updateSlot/${slot._id}`,
@@ -34,8 +36,24 @@ const ParkModal = ({ slot }) => {
           parkingNumber: slot.parkingNumber,
         }
       );
+
+      handleClose();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleExitSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const reserveParkingSlot = await axios.put(
+        `http://localhost:4000/api/slots/updateSlot/${slot._id}`,
+        {
+          parkerPlateNumber: null,
+          parkingNumber: slot.parkingNumber,
+        }
+      );
       console.log(reserveParkingSlot);
-      nav("/dashboard");
       handleClose();
     } catch (err) {
       console.log(err);
@@ -122,7 +140,7 @@ const ParkModal = ({ slot }) => {
                 <Button variant="danger" onClick={handleClose}>
                   Close
                 </Button>
-                <Button variant="success" onClick={handleClose}>
+                <Button variant="success" onClick={handleExitSubmit}>
                   Confirm Exit
                 </Button>
               </Modal.Footer>

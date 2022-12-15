@@ -6,6 +6,7 @@ import ParkModal from "./ParkModal";
 
 function Home() {
   const { currentUser } = useSelector((state) => state.username);
+  const [spaces, setSpaces] = useState([30]);
   console.log(currentUser);
 
   const [modalOn, setModalOn] = useState(false);
@@ -74,7 +75,7 @@ function Home() {
                 </div>
               </div>
               <div className="select-seat">
-                <div className="checkboxes-seat mt-4 d-flex">
+                <div className="checkboxes-seat mt-4 d-flex flex-wrap">
                   <ParkModal />
                   <ParkModal />
                   <ParkModal />

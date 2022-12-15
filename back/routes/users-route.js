@@ -9,6 +9,7 @@ import {
   retrieveUsers,
   addParkers,
   DeleteParkers,
+  allparked,
 } from "../controllers/user-controller.js";
 
 const router = express();
@@ -18,6 +19,9 @@ router.post("/addParker", addParkers);
 
 //Remove parked
 router.delete("/deleteParker", DeleteParkers);
+
+//finding all parked users
+router.get("/findAll", allparked);
 
 //find all users
 router.get("/find/All", retrieveUsers);

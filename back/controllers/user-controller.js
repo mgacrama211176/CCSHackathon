@@ -34,6 +34,16 @@ export const DeleteParkers = async (request, response, next) => {
   }
 };
 
+//generate all parked users in the system
+export const allparked = async (request, response, next) => {
+  try {
+    const All = await ParkingUser.find({});
+    response.status(200).json(All);
+  } catch (err) {
+    response.status(200).json(err);
+  }
+};
+
 //localhost:3000/api/users/find
 export const retrieveUsers = async (request, response, next) => {
   try {

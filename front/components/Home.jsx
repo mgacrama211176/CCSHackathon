@@ -34,7 +34,7 @@ function Home() {
           </div>
         </div>
         <div className="bg-danger px-3 pb-3">
-          <div className="bg-white rounded-1 p-3">
+          <div className="bg-white rounded-1 p-3 mt-2">
             <form action="#">
               <div className="form-group border-bottom pb-2">
                 <label className="mb-2">
@@ -55,46 +55,46 @@ function Home() {
             </form>
           </div>
         </div>
-        <div className="ticket p-3" style={{ backgroundColor: "#f8f9fa" }}>
-          <div className="select-seat row bg-white mx-0 px-3 pt-3 pb-1 mb-3 rounded-1 shadow-sm">
-            <div className="col-8 pl-0">
-              <div className="d-flex">
-                <div className="sold text-center">
-                  <img
-                    src="/img/sold-seat.png"
-                    className="img-fluid mb-1"
-                  ></img>
-                  <p className="small f-10">Unavailable</p>
-                </div>
-                <div className="sold text-center mx-3">
-                  <img
-                    src="/img/selected-seat.png"
-                    className="img-fluid mb-1"
-                  ></img>
-                  <p className="small f-10">Available</p>
-                </div>
+        {/* END HERE */}
+      </div>
+      <div className="ticket p-3">
+        <div className="select-seat row bg-white mx-0 px-3 pt-3 pb-1 mb-3 rounded-1 shadow-sm">
+          <div className="col-8 pl-0">
+            <div className="d-flex">
+              <div className="sold text-center">
+                <img
+                  src="/img/sold-seat.png"
+                  className="img-fluid mb-1"
+                ></img>
+                <p className="small f-10">Unavailable</p>
               </div>
-              <div className="select-seat">
-                <div className="checkboxes-seat mt-4 d-flex flex-wrap">
-                  <ParkModal />
-                  <ParkModal />
-                  <ParkModal />
-                  <ParkModal />
-                  <ParkModal />
+              <div className="sold text-center mx-3">
+                <img
+                  src="/img/selected-seat.png"
+                  className="img-fluid mb-1"
+                ></img>
+                <p className="small f-10">Available</p>
+              </div>
+            </div>
+            <div className="select-seat">
+              <div className="checkboxes-seat mt-4 d-flex flex-wrap">
+                <ParkModal />
+                <ParkModal />
+                <ParkModal />
+                <ParkModal />
+                <ParkModal />
 
-                  <button
-                    type="button"
-                    className="btn check-seat btn-danger small btn-sm rounded mr-2 mb-2"
-                    disabled
-                  >
-                    P2
-                  </button>
-                </div>
+                <button
+                  type="button"
+                  className="btn check-seat btn-danger small btn-sm rounded mr-2 mb-2"
+                  disabled
+                >
+                  P2
+                </button>
               </div>
             </div>
           </div>
         </div>
-        {/* END HERE */}
       </div>
       <Footer />
     </div>

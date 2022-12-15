@@ -1,10 +1,14 @@
+import { useState } from "react";
 import Footer from "../components/Footer";
 import Button from "react-bootstrap/Button";
 import { useDispatch, useSelector } from "react-redux";
+import ParkModal from "./ParkModal";
 
 function Home() {
   const { currentUser } = useSelector((state) => state.username);
   console.log(currentUser);
+
+  const [modalOn, setModalOn] = useState(false);
   return (
     <div className="seat-select padding-bt">
       <div className="p-3 shadow bg-danger danger-nav osahan-home-header">
@@ -70,94 +74,13 @@ function Home() {
                 </div>
               </div>
               <div className="select-seat">
-                <div className="checkboxes-seat mt-4">
-                  <button
-                    type="button"
-                    className="btn check-seat btn-success small btn-sm rounded mr-2 mb-2"
-                    data-toggle="modal"
-                    data-target="#confirmModal"
-                  >
-                    P1
-                  </button>
-                  <div
-                    className="modal fade"
-                    id="confirmModal"
-                    tabIndex="-1"
-                    role="dialog"
-                    aria-hidden="true"
-                  >
-                    <div
-                      className="modal-dialog modal-dialog-centered"
-                      role="document"
-                    >
-                      <div className="modal-content">
-                        <div className="modal-header">
-                          <h5 className="modal-title">Confirm Parking</h5>
-                          <button
-                            type="button"
-                            className="close"
-                            data-dismiss="modal"
-                          >
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <form action="#">
-                          <div className="modal-body">
-                            <div className="form-group">
-                              <label className="text-muted f-10 mb-1">
-                                Driver Name
-                              </label>
-                              <input
-                                className="form-control"
-                                placeholder="Enter the driver's name"
-                              ></input>
-                            </div>
-                            <div className="form-group">
-                              <label className="text-muted f-10 mb-1">
-                                Car Model
-                              </label>
-                              <input
-                                className="form-control"
-                                placeholder="Enter the card model"
-                              ></input>
-                            </div>
-                            <div className="form-group">
-                              <label className="text-muted f-10 mb-1">
-                                Car Type
-                              </label>
-                              <input
-                                className="form-control"
-                                placeholder="Enter the car type"
-                              ></input>
-                            </div>
-                            <div className="form-group">
-                              <label className="text-muted f-10 mb-1">
-                                Car License
-                              </label>
-                              <input
-                                className="form-control"
-                                placeholder="Enter the car license"
-                              ></input>
-                            </div>
-                            <div className="form-group">
-                              <label className="text-muted f-10 mb-1">
-                                Plate Number
-                              </label>
-                              <input
-                                className="form-control"
-                                placeholder="Enter the plate number"
-                              ></input>
-                            </div>
-                          </div>
-                          <div className="modal-footer">
-                            <button type="submit" className="btn btn-success">
-                              Yes
-                            </button>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
+                <div className="checkboxes-seat mt-4 d-flex">
+                  <ParkModal />
+                  <ParkModal />
+                  <ParkModal />
+                  <ParkModal />
+                  <ParkModal />
+
                   <button
                     type="button"
                     className="btn check-seat btn-danger small btn-sm rounded mr-2 mb-2"

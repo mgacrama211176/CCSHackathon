@@ -1,9 +1,12 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { loginFailed, loginStart, loginSuccess } from "../redux/userSlice";
 
 function Login() {
   const nav = useNavigate();
+  const dispatch = useDispatch();
 
   const [user, setUser] = useState({
     email: "",
@@ -19,6 +22,7 @@ function Login() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    dispatch(loginStart(user));
     try {
       const login = await axios
         .post("http://localhost:4000/api/auth/signin", {
@@ -34,9 +38,10 @@ function Login() {
             blank();
           }
         });
+      dispatch(loginSuccess(login.data[0]));
       nav("/");
     } catch (err) {
-      console.log(err);
+      dispatch(loginFailed);
     }
   };
 

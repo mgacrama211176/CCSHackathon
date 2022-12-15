@@ -38,7 +38,7 @@ function Register() {
         <h5 className="font-weight-normal mb-0 text-white">
           <a className="text-danger mr-3" href="/">
             <i className="icofont-rounded-left"></i>
-          </a>{" "}
+          </a>
           Create an account
         </h5>
       </div>

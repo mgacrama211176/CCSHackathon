@@ -1,7 +1,10 @@
 import Footer from "../components/Footer";
 import Button from "react-bootstrap/Button";
+import { useDispatch, useSelector } from "react-redux";
 
 function Home() {
+  const { currentUser } = useSelector((state) => state.username);
+  console.log(currentUser);
   return (
     <div>
       <div className="seat-select padding-bt">
@@ -11,16 +14,22 @@ function Home() {
               src="/img/logo.png"
               className="img-fluid osahan-nav-logo"
             ></img>
+
             <div className="ml-auto d-flex align-items-center">
-              <a href="/login" className="mr-3">
-                {/* <img
-                  src="/img/user1.jpg"
-                  className="img-fluid rounded-circle"
-                ></img> */}
-                <Button variant="light " onClick={() => setModalShow(true)}>
-                  Login
-                </Button>
-              </a>
+              {currentUser ? (
+                <>
+                  <img
+                    src="/img/user1.jpg"
+                    className="img-fluid rounded-circle"
+                  ></img>
+                </>
+              ) : (
+                <>
+                  <a href="/login" className="mr-3">
+                    <Button variant="light ">Login</Button>
+                  </a>
+                </>
+              )}
             </div>
           </div>
         </div>

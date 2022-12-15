@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import Toast from "./Toast";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { format } from "timeago.js";
 
 const ParkModal = ({ slot }) => {
   // console.log(slot);
@@ -15,7 +15,7 @@ const ParkModal = ({ slot }) => {
   const handleShow = () => setShow(true);
 
   useEffect(() => {
-    console.log(slot);
+    // console.log(slot);
   }, []);
 
   const onChangeHandle = (e) => {
@@ -36,7 +36,22 @@ const ParkModal = ({ slot }) => {
           parkingNumber: slot.parkingNumber,
         }
       );
-
+      const parkingLog = await axios.post(
+        `http://localhost:4000/api/users/addParker`,
+        {
+          parkerPlateNumber: plate.plateNumber,
+          parkingNumber: slot.parkingNumber,
+        }
+      );
+      const addNotifNew = await axios.post(
+        `http://localhost:4000/api/notification/new`,
+        {
+          parkerPlateNumber: plate.plateNumber,
+          parkingNumber: slot.parkingNumber,
+          message: "Has Parked",
+          status: "entry",
+        }
+      );
       handleClose();
     } catch (err) {
       console.log(err);
@@ -45,7 +60,17 @@ const ParkModal = ({ slot }) => {
 
   const handleExitSubmit = async (e) => {
     e.preventDefault();
+    console.log(slot.parkerPlateNumber);
     try {
+      const exitNotifNew = await axios.post(
+        `http://localhost:4000/api/notification/exit`,
+        {
+          parkerPlateNumber: slot.parkerPlateNumber,
+          parkingNumber: slot.parkingNumber,
+          message: "Has Exited",
+          status: "exit",
+        }
+      );
       const reserveParkingSlot = await axios.put(
         `http://localhost:4000/api/slots/updateSlot/${slot._id}`,
         {
@@ -53,6 +78,7 @@ const ParkModal = ({ slot }) => {
           parkingNumber: slot.parkingNumber,
         }
       );
+
       console.log(reserveParkingSlot);
       handleClose();
     } catch (err) {
@@ -132,6 +158,9 @@ const ParkModal = ({ slot }) => {
                     </label>
                     <label className="text-muted f-10 mb-1">
                       Parking Slot No : {slot.parkingNumber}
+                    </label>
+                    <label className="text-muted f-10 mb-1">
+                      Parking Time : {format(slot.updatedAt)}
                     </label>
                   </div>
                 </form>

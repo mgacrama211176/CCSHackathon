@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const ParkerSchema = new mongoose.Schema(
   {
-    plateNumber: {
+    parkerPlateNumber: {
       type: String,
       default: "",
     },

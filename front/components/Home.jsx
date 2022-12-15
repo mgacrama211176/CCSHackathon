@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Footer from "../components/Footer";
 import Button from "react-bootstrap/Button";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import ParkModal from "./ParkModal";
 import axios from "axios";
 
@@ -23,8 +23,6 @@ function Home() {
 
   useEffect(() => {
     getAllSlots();
-    console.log(slotsData);
-    // console.log(currentUser);
   }, []);
 
   return (

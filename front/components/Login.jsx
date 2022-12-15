@@ -96,7 +96,7 @@ function Login() {
         </div>
         <div className="osahan-signin text-center p-1">
           <p className="m-0">
-            Not a member?{" "}
+            Not a member?
             <a href="/register" className="text-danger ml-2">
               Sign Up
             </a>

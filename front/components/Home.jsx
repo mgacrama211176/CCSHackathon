@@ -37,13 +37,15 @@ function Home() {
             {currentUser ? (
               <>
                 <a href="#" data-toggle="dropdown">
-                <img
-                  src="/img/user1.jpg"
-                  className="img-fluid rounded-circle"
-                ></img>
+                  <img
+                    src="/img/user1.jpg"
+                    className="img-fluid rounded-circle"
+                  ></img>
                 </a>
                 <div className="dropdown-menu" role="menu">
-                  <a href="/logout" className="dropdown-item">Logout</a>
+                  <a href="/" className="dropdown-item">
+                    Logout
+                  </a>
                 </div>
               </>
             ) : (

@@ -39,7 +39,7 @@ function Login() {
           }
         });
       dispatch(loginSuccess(login.data[0]));
-      nav("/");
+      nav("/dashboard");
     } catch (err) {
       dispatch(loginFailed);
     }

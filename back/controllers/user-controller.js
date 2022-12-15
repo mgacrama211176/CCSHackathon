@@ -1,9 +1,38 @@
 import { createError } from "../error.js";
 import User from "../models/User.js";
-import Video from "../models/Video.js";
+import ParkingUser from "../models/parkingUser.js";
 import crypto from "crypto";
 import nodemailer from "nodemailer";
-import bcrypt from "bcrypt";
+
+//Adding of parking User
+export const addParkers = async (request, response, next) => {
+  const newParker = request.body;
+  try {
+    const newUser = new ParkingUser({
+      ...newParker,
+    });
+    await newUser.save();
+    response.status(200).json(newUser);
+  } catch (err) {
+    next(err);
+  }
+};
+
+//Removing of parking User
+export const DeleteParkers = async (request, response, next) => {
+  const removeParker = request.body.parkingNumber;
+  console.log(removeParker);
+  try {
+    const findParkSLot = await ParkingUser.findOne({
+      parkingNumber: removeParker,
+    });
+    const parkedId = findParkSLot._id;
+    const deleteParker = await ParkingUser.findByIdAndDelete(parkedId);
+    response.status(200).json(deleteParker);
+  } catch (err) {
+    response.status(500).json(`User Not found`);
+  }
+};
 
 //localhost:3000/api/users/find
 export const retrieveUsers = async (request, response, next) => {

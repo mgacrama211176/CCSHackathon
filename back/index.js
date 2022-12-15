@@ -4,10 +4,7 @@ import dotenv from "dotenv";
 
 //ROUTES
 import userRoute from "./routes/users-route.js";
-import videoRoute from "./routes/videos-route.js";
-import commentRoute from "./routes/comments-route.js";
 import authRoute from "./routes/auth.js";
-import ReportsRoute from "./routes/reports-route.js";
 
 import cookieParser from "cookie-parser";
 
@@ -37,9 +34,7 @@ app.use(cors({ credentials: true }));
 
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
-app.use("/api/videos", videoRoute);
-app.use("/api/comments", commentRoute);
-app.use("/api/reports", ReportsRoute);
+app.use("/api/slots", userRoute);
 
 app.use((err, request, response, next) => {
   const status = err.status || 500;

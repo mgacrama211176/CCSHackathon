@@ -6,7 +6,7 @@ const NotifCard = ({ notif }) => {
     <div className="osahan-notification">
       <div className="notification d-flex m-0 bg-white border-bottom p-3">
         <div className="icon pr-3">
-          <span className="icofont-bell-alt bg-primary text-white mb-0 rounded-pill"></span>
+          <span className="icofont-bell-alt bg-danger text-white mb-0 rounded-pill"></span>
         </div>
         <div className="noti-details l-hght-18 pr-0">
           {notif.status === "entry" ? (
@@ -20,7 +20,6 @@ const NotifCard = ({ notif }) => {
           )}
 
           <div className="d-flex flex-column ">
-            <span className="small text-muted">Notification details:</span>
             <span className="small text-muted">
               Plate Number: {notif.parkerPlateNumber}
             </span>

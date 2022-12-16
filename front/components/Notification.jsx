@@ -23,7 +23,7 @@ function Notification() {
       <div className="osahan-notification padding-bt">
         <div className="osahan-header-nav shadow-sm bg-danger p-3 d-flex align-items-center">
           <h5 className="font-weight-normal mb-0 text-white">
-            <a className="text-danger mr-3" href="/">
+            <a className="text-danger mr-3" href="/dashboard">
               <i className="icofont-rounded-left"></i>
             </a>
             Notifications

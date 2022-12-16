@@ -10,7 +10,7 @@ function ProfilePage() {
       <div className="osahan-profile">
         <div className="osahan-header-nav shadow-sm bg-danger p-3 d-flex align-items-center">
           <h5 className="font-weight-normal mb-0 text-white">
-            <a className="text-danger mr-3" href="/">
+            <a className="text-danger mr-3" href="/dashboard">
               <i className="icofont-rounded-left"></i>
             </a>
             My Profile
@@ -27,7 +27,7 @@ function ProfilePage() {
                     </label>
                     <input type="file" id="upload-photo"></input>
                   </div>
-                  <img src="/img/profile.jpg" className="rounded-pill"></img>
+                  <img src="/img/user-icon.png" style={{ width: "70px", height: "70px" }} className="rounded-pill"></img>
                   <label className="text-muted f-10 mb-1">ADMIN</label>
                 </div>
 
@@ -36,15 +36,15 @@ function ProfilePage() {
                   <input
                     className="form-control"
                     placeholder={currentUser.email}
-                    value="email@domain.com"
+                    value={currentUser.email}
                     readOnly
                   ></input>
                 </div>
                 <div className="form-group">
-                  <label className="text-muted f-10 mb-1">Password</label>
+                  <label className="text-muted f-10 mb-1">Current Password</label>
                   <input
                     className="form-control"
-                    placeholder="Enter your password"
+                    placeholder="Enter your current password"
                   ></input>
                 </div>
                 <div className="form-group">

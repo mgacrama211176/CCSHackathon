@@ -37,7 +37,7 @@ function Home() {
               <>
                 <a href="#" data-toggle="dropdown">
                   <img
-                    src="/img/user1.jpg"
+                    src="/img/user-icon.png"
                     className="img-fluid rounded-circle"
                   ></img>
                 </a>
@@ -82,7 +82,7 @@ function Home() {
       </div>
       <div className="ticket p-3">
         <div className="select-seat row bg-white mx-0 px-3 pt-3 pb-1 mb-3 rounded-1 shadow-sm">
-          <div className="col-12 pl-0">
+          <div className="col-12 pl-0 pr-0">
             <div className="d-flex">
               <div className="sold text-center">
                 <img src="/img/sold-seat.png" className="img-fluid mb-1"></img>

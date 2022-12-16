@@ -30,6 +30,7 @@ function Home() {
       <div className="p-3 shadow bg-danger danger-nav osahan-home-header">
         <div className="font-weight-normal mb-0 d-flex align-items-center">
           <img src="/img/logo.png" className="img-fluid osahan-nav-logo"></img>
+          <h5 className="ml-2 mt-2 text-white">USPF Vehicle Parking Locator</h5>
 
           <div className="ml-auto d-flex align-items-center">
             {currentUser ? (
@@ -72,7 +73,7 @@ function Home() {
                 type="submit"
                 className="btn btn-danger btn-block osahanbus-btn rounded-1"
               >
-                Search
+                Search Available Parking
               </button>
             </form>
           </div>
@@ -81,7 +82,7 @@ function Home() {
       </div>
       <div className="ticket p-3">
         <div className="select-seat row bg-white mx-0 px-3 pt-3 pb-1 mb-3 rounded-1 shadow-sm">
-          <div className="col-8 pl-0">
+          <div className="col-12 pl-0">
             <div className="d-flex">
               <div className="sold text-center">
                 <img src="/img/sold-seat.png" className="img-fluid mb-1"></img>
@@ -96,7 +97,7 @@ function Home() {
               </div>
             </div>
             <div className="select-seat">
-              <div className="checkboxes-seat mt-4 d-flex flex-wrap justify-content-center text-center">
+              <div className="checkboxes-seat mt-4 d-flex justify-content-center align-items-center flex-wrap">
                 {slotsData.map((slot) => (
                   <ParkModal slot={slot} key={slot._id} />
                 ))}

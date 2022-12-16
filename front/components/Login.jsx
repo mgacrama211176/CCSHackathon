@@ -81,11 +81,6 @@ function Login() {
               }}
             ></input>
           </div>
-          <div className="text-right mb-3">
-            <a href="/forgotpassword" className="text-muted small">
-              Forgot your password?
-            </a>
-          </div>
           <button
             type="submit"
             className="btn btn-danger btn-block osahanbus-btn mb-4 rounded-1"

@@ -1,30 +1,22 @@
 import React from "react";
-import Logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
-
-const dashboardContainer = {
-  displayFLex: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  backgroundColor: "#DC3545",
-  height: "100vh",
-};
 
 const HomePage = () => {
   return (
-    <div
-      style={dashboardContainer}
-      className="d-flex container-fluid flex-column align-content-center justify-content-center"
-    >
-      <h1 className="display-4 text-white text-monospace text-center">
-        USPF VEHICLE PARKING LOCATOR
-      </h1>
-      <img src={Logo} alt="Logo" className="img-fluid" />
-      <Link to={"/login"}>
-        <button type="button" className="btn btn-outline-light">
-          LOGIN
-        </button>
-      </Link>
+    <div>
+      <div className="osahan-index bg-c d-flex align-items-center justify-content-center vh-100 index-page">
+        <div className="text-center">
+          <a href="/">
+            <i className="icofont-bus text-white display-1 bg-danger p-4 rounded-circle"></i>
+          </a><br></br>
+          <div className="spinner"></div>
+        </div>
+      </div>
+      <div className="osahan-footer fixed-bottom m-3">
+        <Link to={"/getstarted"}>
+          <button className="btn btn-block px-4 py-3 d-flex align-items-center osahanbus-btlan btn-danger text-white shadow">Get Started <i className="icofont-arrow-right ml-auto"></i></button>
+        </Link>
+      </div>
     </div>
   );
 };

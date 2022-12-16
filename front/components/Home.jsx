@@ -96,7 +96,7 @@ function Home() {
               </div>
             </div>
             <div className="select-seat">
-              <div className="checkboxes-seat mt-4 d-flex flex-wrap">
+              <div className="checkboxes-seat mt-4 d-flex flex-wrap justify-content-center text-center">
                 {slotsData.map((slot) => (
                   <ParkModal slot={slot} key={slot._id} />
                 ))}

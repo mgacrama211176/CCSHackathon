@@ -28,9 +28,6 @@ function Notification() {
             </a>
             Notifications
           </h5>
-          <div className="ml-auto d-flex align-items-center">
-            <NoticeModal />
-          </div>
         </div>
         {notifContainer.map((notif) => (
           <NotifCard notif={notif} key={notif._id} />

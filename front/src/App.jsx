@@ -1,5 +1,6 @@
 import React from "react";
 import Home from "../pages/Home";
+import GetStarted from '../pages/GetStarted';
 import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
 import Reports from "../pages/Reports";
@@ -14,6 +15,7 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/getstarted" element={<GetStarted/>}/>
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/login" element={<SignIn />} />
         <Route path="/register" element={<SignUp />} />
